@@ -1,0 +1,13 @@
+{
+  "name": "emotist-therapists-api",
+  "version": "1.0.0",
+  "description": "Simple therapists API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
