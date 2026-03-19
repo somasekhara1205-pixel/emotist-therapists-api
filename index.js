@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 
 const app = express();
 const PORT = 3000;
@@ -9,7 +9,7 @@ const therapists = [
   { id: 2, name: "Dr. Michael Lee", specialization: "Depression" }
 ];
 
-// Middleware for logging
+// Logging middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url} called`);
   next();
