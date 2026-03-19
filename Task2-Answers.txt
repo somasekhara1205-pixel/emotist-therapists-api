@@ -1,0 +1,58 @@
+----------------------Scenario 1--------------------------
+1. Possible Causes:
+   a)Backend API /api/therapists is down or failing
+   b)Wrong API URL / env config in frontend
+   c)Auth/CORS issue (token missing or blocked)
+  Diagnosis:
+  a)Check Network tab (API status)
+  b)Curl API from serves
+  c)Check backend logs
+
+2. SSH Commands inside EC2 
+    ps aux | grep node
+    netstat -tulnp | grep 3000
+    pm2 logs
+    curl http://localhost:3000/api/therapists
+    top
+---------------------Scenario 2---------------------
+1. Possible Causes:
+    a)Expired/invalid JWT
+    b)Secret mismatch (backend vs Supabase)
+    c)Token not sent properly
+
+2. Places might involved
+  a)Supabase (auth)
+  b)Backend (JWT validation)
+  c)Frontend (token handling)
+
+3. Troubleshooting
+  a)Decode JWT (check expiry)
+  b)Verify env secrets
+  c)Check Authorization header
+  d)Check backend logs
+------------------Scenario 3-------------------------
+1. 502 = Load balancer not getting valid response from backend
+2.Causes
+  a)App crashed / not running
+  b)Health check failing
+  c)Port/config mismatch
+  d)Resource overload
+
+3. Steps
+  a)Check app status (pm2 status)
+  b)Check logs
+  c)Curl health endpoint
+  d)Verify port & security groups
+  e)Check EC2 resources
+-------------------Scenario 4-----------------------
+1. Redis not reachable → BullMQ stopped
+
+2. Impact
+  a)Emails not sent
+  b)Background jobs stopped
+3.Fix
+  a)Check Redis (redis-cli ping)
+  b)Verify config (host/port/password)
+  c)Restart Redis
+  d)Check network/security groups
+  e)Restart worker
